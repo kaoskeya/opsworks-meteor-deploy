@@ -6,9 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-execute "install foreverjs" do
+
+bash "install foreverjs" do
 	user "root"
-  # command "npm install forever -g"
 	code <<-EOH
     npm install forever -g
   EOH
