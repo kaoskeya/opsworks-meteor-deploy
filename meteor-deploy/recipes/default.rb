@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-bash "install fibers" do 
+bash "install fibers" do
   user "root"
   cwd "/root/bundle/programs/server"
   code <<-EOH
@@ -15,7 +15,7 @@ bash "install fibers" do
   EOH
 end
 
-bash "meteor install" do 
+bash "meteor install" do
 	user "root"
 	cwd "/root/bundle/programs/server"
 	code <<-EOH
@@ -29,12 +29,12 @@ execute "Start Meteor as Node Application with Websockets option defined in Stac
 	command startup_command
 end
 
-if( defined?( node["deploy"]["YOUR_APP_NAME"]["DISABLE_WEBSOCKETS"] ).nil? )
+if( defined?( node["deploy"]["stest"]["DISABLE_WEBSOCKETS"] ).nil? )
 
 	execute "Start Meteor as Node Application with Websockets enabled (no DISABLE_WEBSOCKETS option available)" do
 		user "root"
 		cwd "/root/bundle"
-		command "PORT=#{node["deploy"]["YOUR_APP_NAME"]["PORT"]} MONGO_URL=#{node["deploy"]["YOUR_APP_NAME"]["MONGO_URL"]} ROOT_URL=#{node["deploy"]["YOUR_APP_NAME"]["ROOT_URL"]} MAIL_URL=#{node["deploy"]["YOUR_APP_NAME"]["MAIL_URL"]} forever start main.js"
+		command "PORT=#{node["deploy"]["stest"]["PORT"]} MONGO_URL=#{node["deploy"]["stest"]["MONGO_URL"]} ROOT_URL=#{node["deploy"]["stest"]["ROOT_URL"]} MAIL_URL=#{node["deploy"]["stest"]["MAIL_URL"]} forever start main.js"
 	end
 
 else
@@ -42,7 +42,7 @@ else
 	execute "Start Meteor as Node Application with Websockets option defined in Stack Settings" do
 		user "root"
 		cwd "/root/bundle"
-		command "PORT=#{node["deploy"]["YOUR_APP_NAME"]["PORT"]} MONGO_URL=#{node["deploy"]["YOUR_APP_NAME"]["MONGO_URL"]} ROOT_URL=#{node["deploy"]["YOUR_APP_NAME"]["ROOT_URL"]} MAIL_URL=#{node["deploy"]["YOUR_APP_NAME"]["MAIL_URL"]} DISABLE_WEBSOCKETS=#{node["deploy"]["YOUR_APP_NAME"]["DISABLE_WEBSOCKETS"]} forever start main.js"
+		command "PORT=#{node["deploy"]["stest"]["PORT"]} MONGO_URL=#{node["deploy"]["stest"]["MONGO_URL"]} ROOT_URL=#{node["deploy"]["stest"]["ROOT_URL"]} MAIL_URL=#{node["deploy"]["stest"]["MAIL_URL"]} DISABLE_WEBSOCKETS=#{node["deploy"]["stest"]["DISABLE_WEBSOCKETS"]} forever start main.js"
 		end
-		
+
 end
