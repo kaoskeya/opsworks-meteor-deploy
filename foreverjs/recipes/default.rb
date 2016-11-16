@@ -8,5 +8,8 @@
 #
 execute "install foreverjs" do
 	user "root"
-  command "npm install forever -g"
+  # command "npm install forever -g"
+	code <<-EOH
+    npm install forever -g
+  EOH
 end
