@@ -23,11 +23,11 @@ bash "meteor install" do
 	EOH
 end
 
-execute "Start Meteor as Node Application with Websockets option defined in Stack Settings" do
-	user "root"
-	cwd "/root/bundle"
-	command startup_command
-end
+# execute "Start Meteor as Node Application with Websockets option defined in Stack Settings" do
+# 	user "root"
+# 	cwd "/root/bundle"
+# 	command startup_command
+# end
 
 if( defined?( node["deploy"]["stest"]["DISABLE_WEBSOCKETS"] ).nil? )
 
